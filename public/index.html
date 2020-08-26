@@ -3,6 +3,7 @@
   <head>
     <title>Socket.IO chat</title>
     <link rel="stylesheet" href="/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.7.3/socket.io.js"></script>
   </head>
   <body>
@@ -11,8 +12,9 @@
         <h2>Live Chat</h2>
         <div id="chat-window">
             <div id="output"></div>
+            <div id="feedback"></div>
         </div>
-        <input id="name" type="text" placeholder="Name" />
+        <input id="handle" type="text" placeholder="Name" />
         <input id="message" type="text" placeholder="Message" />
         <button id="send">Send</button>
     </div>

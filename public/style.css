@@ -1,23 +1,22 @@
 body{
     font-family: 'Nunito';
+    background-color: #f4efea;
 }
 
 h2{
-    font-size: 18px;
-    padding: 10px 20px;
-    color: #575ed8;
+    font-size: 26px;
+    margin-bottom: 0;
+    color: #555;
+    font-family: 'Permanent Marker', cursive;
 }
 
 #livechatt{
     max-width: 600px;
     margin: 30px auto;
-    border: 1px solid #ddd;
-    box-shadow: 1px 3px 5px rgba(0,0,0,0.05);
-    border-radius: 2px;
 }
 
 #chat-window{
-    height: 400px;
+    height: 300px;
     overflow: auto;
     background: #f9f9f9;
 }
@@ -36,7 +35,7 @@ h2{
 }
 
 #output strong{
-    color: #575ed8;
+    color: #555;
 }
 
 label{
@@ -59,11 +58,12 @@ input{
 }
 
 button{
-    background: #575ed8;
+    background: #555;
     color: #fff;
     font-size: 18px;
     border: 0;
     padding: 12px 0;
     width: 100%;
     border-radius: 0 0 2px 2px;
+    cursor: pointer;
 }
