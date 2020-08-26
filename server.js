@@ -1,24 +1,15 @@
 const express = require('express');
+const socket = require('socket.io');
+
 const app = express();
-const http = require('http').createServer(app);
-const io = require('socket.io')(http, {pingTimeout: 30000});
-const port = process.env.PORT || 3000;
-
-app.use(express.static(__dirname + '/public'));
-
-io.on('connection', function(socket){
-  socket.on('disconnect', function(){
-    console.log('user disconnected');
-  });
-
-  socket.on('chat message', function(msg) {
-    console.log('message' + msg);
-    io.emit('chat message', msg);
-  })
-
+const server = app.listen(3000, function() {
+    console.log('server is running on port 3000')
 });
 
+app.use(express.static('public'));
 
-http.listen(port, function(){
-  console.log('listening on *:' + port);
+const io = socket(server);
+
+io.on('connection', function(socket) {
+    console.log('made socket connection', socket.id);
 });
