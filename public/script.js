@@ -11,7 +11,7 @@ var message = document.getElementById('message'),
 // Emit events
 btn.addEventListener('click', function(){
     if(message.value == "/quote") {
-        async function hej() {
+        async function command() {
 
         const quoteList = await fetch("https://type.fit/api/quotes")
         const oneQoute = await quoteList.json()
@@ -22,7 +22,7 @@ btn.addEventListener('click', function(){
             message: item.text
         });
     }
-    hej();
+    command();
     message.value = "";
     } else {
         socket.emit('chat', {
@@ -46,3 +46,17 @@ socket.on('typing', function(data){
     feedback.innerHTML = '<p><em>' + data + ' is typing a message...</em></p>';
 });
 
+function check() {
+
+    if (message.value == '/') {
+      const quote = document.getElementById('quote')
+      quote.style.display = 'block'
+      quote.onclick = function () {
+          const inputText = document.getElementById('message')
+          inputText.value = '/quote'
+          quote.style.display = 'none'
+        }
+    } else {
+        quote.style.display = 'none'
+    }
+};
