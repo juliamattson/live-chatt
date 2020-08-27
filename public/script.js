@@ -10,11 +10,27 @@ var message = document.getElementById('message'),
 
 // Emit events
 btn.addEventListener('click', function(){
-    socket.emit('chat', {
-        message: message.value,
-        handle: handle.value
-    });
+    if(message.value == "/quote") {
+        async function hej() {
+
+        const quoteList = await fetch("https://type.fit/api/quotes")
+        const oneQoute = await quoteList.json()
+    
+        var item = oneQoute[Math.floor(Math.random() * oneQoute.length)]; 
+        socket.emit('chat', {
+            handle: handle.value,
+            message: item.text
+        });
+    }
+    hej();
     message.value = "";
+    } else {
+        socket.emit('chat', {
+            message: message.value,
+            handle: handle.value
+        });
+        message.value = "";
+    }
 });
 
 message.addEventListener('keypress', function(){
@@ -29,3 +45,4 @@ socket.on('chat', function(data){
 socket.on('typing', function(data){
     feedback.innerHTML = '<p><em>' + data + ' is typing a message...</em></p>';
 });
+
